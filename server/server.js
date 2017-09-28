@@ -15,7 +15,7 @@ let pollingInterval;
 // JOHNNY-FIVE CONFIG AND STARTUP
 // =============================================================================
 const board = five.Board({
-    port: "COM4"
+    port: config.boardCommPort
 });
 let relay = null;
 
