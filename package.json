@@ -1,0 +1,24 @@
+{
+  "name": "teamcitybuildbox",
+  "version": "0.0.1",
+  "description": "Team City Build Watcher",
+  "main": "index.js",
+  "scripts": {
+    "test": "j5 test"
+  },
+  "keywords": [
+    "johnny-five",
+    "iot",
+    "javascript"
+  ],
+  "author": "Mark Valenzia",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "johnny-five": "^0.11.6",
+    "socket.io": "^2.0.3",
+    "vue": "2.4.4"
+  }
+}

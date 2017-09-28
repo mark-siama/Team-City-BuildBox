@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Team City Build Watcher</title>
+    <link rel="stylesheet" href="./bootstrap-yeti.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div id="app" class="container">
+        <div v-if="buildState.length < 1" class="jumbotron alert-success">
+            <h1>All Good!</h1>
+            <svg class="trophy" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 416 448">
+                <path d="M114.5 220.75c-10.5-23-18.5-53.5-18.5-92.75h-64v24c0 24.5 33.25 58.5 82.5 68.75zM384 152v-24h-64c0 39.25-8 69.75-18.5 92.75 49.25-10.25 82.5-44.25 82.5-68.75zM416 120v32c0 47.5-57.5 100-135.5 103.75-10 12.75-19.25 20.25-23.75 23.75-13.25 12-16.75 24.5-16.75 40.5s8 32 32 32 48 16 48 40v16c0 4.5-3.5 8-8 8h-208c-4.5 0-8-3.5-8-8v-16c0-24 24-40 48-40s32-16 32-32-3.5-28.5-16.75-40.5c-4.5-3.5-13.75-11-23.75-23.75-78-3.75-135.5-56.25-135.5-103.75v-32c0-13.25 10.75-24 24-24h72v-24c0-22 18-40 40-40h144c22 0 40 18 40 40v24h72c13.25 0 24 10.75 24 24z"></path>
+            </svg>
+
+        </div>
+
+        <div v-if="buildState.length > 0" class="jumbotron alert-danger">
+            <h1>Build Errors</h1>
+            <p class="flex-container" v-for="buildName of buildState"><svg class="bug" version="1.1" xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448">
+                <path d="M408 240c0 8.75-7.25 16-16 16h-56c0 31.25-6.75 54.75-16.75 72.5l52 52.25c6.25 6.25 6.25 16.25 0 22.5-3 3.25-7.25 4.75-11.25 4.75s-8.25-1.5-11.25-4.75l-49.5-49.25s-32.75 30-75.25 30v-224h-32v224c-45.25 0-78.25-33-78.25-33l-45.75 51.75c-3.25 3.5-7.5 5.25-12 5.25-3.75 0-7.5-1.25-10.75-4-6.5-6-7-16-1.25-22.75l50.5-56.75c-8.75-17.25-14.5-39.5-14.5-68.5h-56c-8.75 0-16-7.25-16-16s7.25-16 16-16h56v-73.5l-43.25-43.25c-6.25-6.25-6.25-16.25 0-22.5s16.25-6.25 22.5 0l43.25 43.25h211l43.25-43.25c6.25-6.25 16.25-6.25 22.5 0s6.25 16.25 0 22.5l-43.25 43.25v73.5h56c8.75 0 16 7.25 16 16zM288 96h-160c0-44.25 35.75-80 80-80s80 35.75 80 80z"></path>
+                </svg> {{buildName}}</p>
+        </div>
+
+        <div v-if="connectionState.length > 0" class="jumbotron alert-warning">
+            <h1>Connection Errors</h1>
+            <p class="flex-container" v-for="connect of connectionState"><svg class="flame" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path d="M160.504 512c-34.123-71.004-15.951-111.689 10.275-150.022 28.72-41.978 36.122-83.533 36.122-83.533s22.577 29.35 13.546 75.254c39.886-44.4 47.412-115.14 41.391-142.232 90.157 63.006 128.688 199.428 76.761 300.533 276.186-156.266 68.699-390.086 32.577-416.425 12.041 26.338 14.324 70.925-10 92.563-41.176-156.138-142.986-188.138-142.986-188.138 12.041 80.522-43.648 168.572-97.348 234.365-1.887-32.108-3.891-54.264-20.775-84.99-3.79 58.328-48.366 105.874-60.437 164.314-16.351 79.143 12.248 137.090 120.874 198.311z"></path>
+                </svg></i> {{connect}}</p>
+        </div>
+    </div>
+    <script src="./client.io.js"></script>
+    <script src="./clientVue.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.trophy {
+  fill: #e4e846;
+  display: block;
+  width: 50%;
+  margin: 1rem auto;
+}
+
+.bug, .flame {
+  fill: white;
+  width: 30px;
+  height: auto;
+  display: inline-flex;
+  margin-right: 2rem;
+}
