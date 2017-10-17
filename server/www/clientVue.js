@@ -4,7 +4,8 @@ const app = new Vue({
     relayState: "",
     buildState: [],
     connectionState: [],
-    isActive: false
+    isActive: false,
+    dateTimeOfCheck: ''
   },
   created: function() {
     webSocket.on('relay state', (state) => {
@@ -14,6 +15,7 @@ const app = new Vue({
     webSocket.on('build array', (buildArray) => {
       this.buildState = buildArray[0];
       this.connectionState = buildArray[1];
+      this.dateTimeOfCheck = new Date(Date.now()).toLocaleString();
     });
   },
   methods: {
