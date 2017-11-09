@@ -6,6 +6,7 @@ const serverIO = require('socket.io')(http);
 const axios = require('axios');
 const path = require('path');
 const five = require('johnny-five');
+const raspi = require('raspi-io');
 const config = require('./config.js');
 let buildFailureArray = [];
 let connectionErrorArray = [];
@@ -15,7 +16,7 @@ let pollingInterval;
 // JOHNNY-FIVE CONFIG AND STARTUP
 // =============================================================================
 const board = five.Board({
-    port: config.boardCommPort
+    io: new raspi()
 });
 let relay = null;
 
